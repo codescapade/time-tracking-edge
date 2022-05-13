@@ -1,4 +1,8 @@
 
+.active-tracking {
+  background-color: green;
+}
+
 .red-button {
   background-color: red;
 }

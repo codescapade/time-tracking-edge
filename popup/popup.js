@@ -63,6 +63,9 @@ window.onload = async () => {
     const button = document.createElement('button');
     button.classList.add('item-button');
     button.innerHTML = name;
+    if (data.activeTask === name) {
+      button.classList.add('active-tracking');
+    }
     button.addEventListener('click', async (ev) => {
       if (editing) {
         parent.removeChild(button);
@@ -85,6 +88,14 @@ window.onload = async () => {
         } else {
           console.log(name);
           data.activeTask = '';
+        }
+
+        const buttons = document.querySelectorAll('.item-button')
+        for (let button of buttons) {
+          button.classList.remove('active-tracking');
+          if (button.innerHTML == data.activeTask) {
+            button.classList.add('active-tracking');
+          }
         }
 
         await saveData(data);
